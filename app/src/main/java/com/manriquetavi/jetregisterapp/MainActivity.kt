@@ -39,6 +39,8 @@ import com.manriquetavi.jetregisterapp.ui.theme.JetRegisterAppTheme
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.util.Log
+import android.widget.Toast
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.compose.material3.Button
@@ -49,6 +51,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.PackageManagerCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.manriquetavi.jetregisterapp.navigation.SetUpNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -62,6 +66,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetRegisterAppTheme {
                 // A surface container using the 'background' color from the theme
+                FirebaseMessaging.getInstance().token
+                    .addOnCompleteListener(OnCompleteListener { task ->
+                        if (!task.isSuccessful) {
+                            Log.d("FCM Notify", "Fetching FCM registration token failed", task.exception)
+                            return@OnCompleteListener
+                        }
+                        val token: String? = task.result
+                        Log.d("FCM Token", token, task.exception)
+                    })
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
