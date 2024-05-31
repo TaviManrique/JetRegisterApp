@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88443668732",
+    "project_id": "fir-app-de-registro",
+    "storage_bucket": "fir-app-de-registro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88443668732:android:a8df7bf903b74830f46f79",
+        "android_client_info": {
+          "package_name": "com.manriquetavi.jetregisterapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnkXIP6FVgpUpSgSde3bY0g_Ke54xCDG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
